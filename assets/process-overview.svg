@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" font-family="Calibri, Segoe UI, sans-serif" role="img" aria-label="Hardened Build LLC software development lifecycle process overview">
+<rect width="1600" height="760" fill="#0b1220"/>
+<text x="800.0" y="56" fill="#e8eef6" font-size="34" font-weight="700" text-anchor="middle">Hardened Build LLC — Software Development Lifecycle</text>
+<text x="800.0" y="92" fill="#9fb0c6" font-size="19" text-anchor="middle">A governed, sequential process across ten lifecycle phases</text>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#5eb0c8"/></marker></defs>
+<line x1="330" y1="225" x2="370" y2="225" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="630" y1="225" x2="670" y2="225" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="930" y1="225" x2="970" y2="225" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="1230" y1="225" x2="1270" y2="225" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="1400" y1="300" x2="1400" y2="390" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="1270" y1="465" x2="1230" y2="465" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="970" y1="465" x2="930" y2="465" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="670" y1="465" x2="630" y2="465" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="370" y1="465" x2="330" y2="465" stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>
+<rect x="70" y="150" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="88" y="184" fill="#5eb0c8" font-size="18" font-weight="700">01</text>
+<text x="88" y="214" fill="#e8eef6" font-size="20" font-weight="700">Business</text>
+<text x="88" y="238" fill="#e8eef6" font-size="20" font-weight="700">Requirements</text>
+<text x="88" y="266" fill="#9fb0c6" font-size="14">Elicitation and formalization</text>
+<text x="88" y="284" fill="#9fb0c6" font-size="14">of stakeholder objectives.</text>
+<rect x="370" y="150" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="388" y="184" fill="#5eb0c8" font-size="18" font-weight="700">02</text>
+<text x="388" y="214" fill="#e8eef6" font-size="20" font-weight="700">Solution</text>
+<text x="388" y="238" fill="#e8eef6" font-size="20" font-weight="700">Architecture</text>
+<text x="388" y="266" fill="#9fb0c6" font-size="14">Definition of system</text>
+<text x="388" y="284" fill="#9fb0c6" font-size="14">structure, technology, and</text>
+<rect x="670" y="150" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="688" y="184" fill="#5eb0c8" font-size="18" font-weight="700">03</text>
+<text x="688" y="214" fill="#e8eef6" font-size="20" font-weight="700">AI/App Design</text>
+<text x="688" y="242" fill="#9fb0c6" font-size="14">Detailed design of interfaces,</text>
+<text x="688" y="260" fill="#9fb0c6" font-size="14">data, and model interactions.</text>
+<rect x="970" y="150" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="988" y="184" fill="#5eb0c8" font-size="18" font-weight="700">04</text>
+<text x="988" y="214" fill="#e8eef6" font-size="20" font-weight="700">AI/App Development</text>
+<text x="988" y="242" fill="#9fb0c6" font-size="14">Implementation of the approved</text>
+<text x="988" y="260" fill="#9fb0c6" font-size="14">design.</text>
+<rect x="1270" y="150" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="1288" y="184" fill="#5eb0c8" font-size="18" font-weight="700">05</text>
+<text x="1288" y="214" fill="#e8eef6" font-size="20" font-weight="700">QA Testing</text>
+<text x="1288" y="242" fill="#9fb0c6" font-size="14">Independent verification of</text>
+<text x="1288" y="260" fill="#9fb0c6" font-size="14">quality and correctness.</text>
+<rect x="1270" y="390" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="1288" y="424" fill="#5eb0c8" font-size="18" font-weight="700">06</text>
+<text x="1288" y="454" fill="#e8eef6" font-size="20" font-weight="700">UAT Testing Support</text>
+<text x="1288" y="482" fill="#9fb0c6" font-size="14">Support of user acceptance</text>
+<text x="1288" y="500" fill="#9fb0c6" font-size="14">activities.</text>
+<rect x="970" y="390" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="988" y="424" fill="#5eb0c8" font-size="18" font-weight="700">07</text>
+<text x="988" y="454" fill="#e8eef6" font-size="20" font-weight="700">Deployment Support</text>
+<text x="988" y="482" fill="#9fb0c6" font-size="14">Controlled release to the</text>
+<text x="988" y="500" fill="#9fb0c6" font-size="14">production environment.</text>
+<rect x="670" y="390" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="688" y="424" fill="#5eb0c8" font-size="18" font-weight="700">08</text>
+<text x="688" y="454" fill="#e8eef6" font-size="20" font-weight="700">Post-deployment</text>
+<text x="688" y="478" fill="#e8eef6" font-size="20" font-weight="700">Testing Support</text>
+<text x="688" y="506" fill="#9fb0c6" font-size="14">Verification of system</text>
+<text x="688" y="524" fill="#9fb0c6" font-size="14">behavior in production.</text>
+<rect x="370" y="390" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="388" y="424" fill="#5eb0c8" font-size="18" font-weight="700">09</text>
+<text x="388" y="454" fill="#e8eef6" font-size="20" font-weight="700">Post-deployment</text>
+<text x="388" y="478" fill="#e8eef6" font-size="20" font-weight="700">HyperCare</text>
+<text x="388" y="506" fill="#9fb0c6" font-size="14">Heightened support during the</text>
+<text x="388" y="524" fill="#9fb0c6" font-size="14">stabilization period.</text>
+<rect x="70" y="390" width="260" height="150" rx="12" fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>
+<text x="88" y="424" fill="#5eb0c8" font-size="18" font-weight="700">10</text>
+<text x="88" y="454" fill="#e8eef6" font-size="20" font-weight="700">Post-deployment</text>
+<text x="88" y="478" fill="#e8eef6" font-size="20" font-weight="700">Support</text>
+<text x="88" y="506" fill="#9fb0c6" font-size="14">Ongoing maintenance and</text>
+<text x="88" y="524" fill="#9fb0c6" font-size="14">operational support.</text>
+<text x="1530" y="736" fill="#5f7391" font-size="14" text-anchor="end">hardenedbuild — process overview</text>
+</svg>
