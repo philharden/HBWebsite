@@ -1,6 +1,6 @@
-# Hardened Build LLC — Website
+# Hardened Builds LLC — Website
 
-Static, dependency-free marketing website for Hardened Build LLC, generated from a
+Static, dependency-free marketing website for Hardened Builds LLC, generated from a
 single source of truth (`build.py`). Output is plain HTML, CSS, and vanilla JavaScript
 with no runtime dependencies, so it is portable to any static host and to the customer
 platform with minimal maintenance.

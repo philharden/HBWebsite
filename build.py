@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hardened Build LLC — static site generator.
+Hardened Builds LLC — static site generator.
 
 Single source of truth for all site content and markup. Emits dependency-free
 static HTML/CSS/JS into ./dist, portable to any static host. No runtime
@@ -14,8 +14,8 @@ import shutil
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, "dist")
 
-COMPANY = "Hardened Build LLC"
-TAGLINE = "Secure Application Development Across the Complete Software Development Lifecycle"
+COMPANY = "Hardened Builds LLC"
+TAGLINE = "Application Development & AI Engineering"
 
 # ---------------------------------------------------------------------------
 # Service data — the single source of truth.
@@ -43,7 +43,7 @@ SERVICES = [
         "intro": (
             "The Business Requirements phase establishes a precise and shared "
             "understanding of the objectives the solution is required to satisfy. "
-            "Hardened Build LLC conducts structured elicitation with stakeholders "
+            "Hardened Builds LLC conducts structured elicitation with stakeholders "
             "and translates business intent into unambiguous, verifiable requirements "
             "that govern every subsequent phase of the engagement."
         ),
@@ -68,7 +68,7 @@ SERVICES = [
         ],
         "intro": (
             "The Solution Architecture phase defines the structural and technical "
-            "strategy of the system. Hardened Build LLC designs architectures that "
+            "strategy of the system. Hardened Builds LLC designs architectures that "
             "are secure by default, maintainable over their operational life, and "
             "portable across hosting environments. Where artificial intelligence "
             "components are present, the architecture is designed to minimize model "
@@ -100,7 +100,7 @@ SERVICES = [
         ],
         "intro": (
             "The Design phase converts the approved architecture into detailed, "
-            "implementable specifications. Hardened Build LLC produces designs for "
+            "implementable specifications. Hardened Builds LLC produces designs for "
             "user interfaces, data structures, and, where applicable, model and "
             "prompt behavior, each specified with sufficient precision to govern "
             "implementation without ambiguity."
@@ -125,7 +125,7 @@ SERVICES = [
             "Continuous integration of changes",
         ],
         "intro": (
-            "The Development phase implements the approved design. Hardened Build LLC "
+            "The Development phase implements the approved design. Hardened Builds LLC "
             "applies secure coding practices, enforced version control, and peer review "
             "from the first commit. Authentication, authorization, and data protection "
             "controls are implemented as foundational properties of the system rather "
@@ -152,7 +152,7 @@ SERVICES = [
         ],
         "intro": (
             "The Quality Assurance phase provides independent verification that the "
-            "implemented solution satisfies its requirements. Hardened Build LLC "
+            "implemented solution satisfies its requirements. Hardened Builds LLC "
             "executes documented test plans encompassing functional correctness, "
             "regression, security, and performance, and manages identified defects "
             "through a structured resolution process."
@@ -179,7 +179,7 @@ SERVICES = [
         "intro": (
             "The User Acceptance Testing Support phase assists stakeholders in "
             "verifying that the solution satisfies business objectives under realistic "
-            "conditions. Hardened Build LLC prepares acceptance materials, supports "
+            "conditions. Hardened Builds LLC prepares acceptance materials, supports "
             "users throughout execution, and facilitates the formal acceptance decision."
         ),
         "delivers": [
@@ -203,7 +203,7 @@ SERVICES = [
         ],
         "intro": (
             "The Deployment Support phase governs the controlled release of the "
-            "solution to the production environment. Hardened Build LLC plans and "
+            "solution to the production environment. Hardened Builds LLC plans and "
             "executes deployment through established, repeatable procedures, with "
             "defined rollback provisions and verification of the released system."
         ),
@@ -229,7 +229,7 @@ SERVICES = [
         "intro": (
             "The Post-deployment Testing Support phase verifies that the solution "
             "operates correctly within the production environment following release. "
-            "Hardened Build LLC confirms system behavior, validates monitoring, and "
+            "Hardened Builds LLC confirms system behavior, validates monitoring, and "
             "coordinates resolution of any issues observed under live conditions."
         ),
         "delivers": [
@@ -252,7 +252,7 @@ SERVICES = [
         ],
         "intro": (
             "The HyperCare phase provides heightened, time-bounded support during the "
-            "critical period immediately following deployment. Hardened Build LLC "
+            "critical period immediately following deployment. Hardened Builds LLC "
             "assigns a dedicated response team to ensure rapid identification and "
             "resolution of issues while the solution stabilizes in production."
         ),
@@ -277,7 +277,7 @@ SERVICES = [
         ],
         "intro": (
             "The Post-deployment Support phase sustains the solution over its "
-            "operational life. Hardened Build LLC provides corrective maintenance, "
+            "operational life. Hardened Builds LLC provides corrective maintenance, "
             "managed enhancements, and service-level-based support, with continuous "
             "monitoring to preserve performance, security, and availability."
         ),
@@ -325,7 +325,8 @@ def head(title, description, depth):
 <meta name="description" content="{e(description)}">
 <title>{e(title)}</title>
 <link rel="stylesheet" href="{prefix}styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1220'/%3E%3Cpath d='M16 4l10 4v7c0 6-4 10-10 13C10 25 6 21 6 15V8z' fill='none' stroke='%235eb0c8' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="{prefix}assets/favicon.png">
+<link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 </head>
 <body>"""
 
@@ -340,11 +341,9 @@ def header(depth):
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="brand" href="{prefix}index.html">
-      <svg class="brand__mark" width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M16 3l11 4v8c0 6.6-4.5 11.3-11 14C9.5 26.3 5 21.6 5 15V7z" fill="none" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      <span class="brand__name">Hardened Build<span class="brand__llc"> LLC</span></span>
+    <a class="brand" href="{prefix}index.html" aria-label="Hardened Builds LLC — home">
+      <img class="brand__mark" src="{prefix}assets/logo-mark.png" width="44" height="20" alt="" aria-hidden="true">
+      <span class="brand__name">Hardened Builds<span class="brand__llc"> LLC</span></span>
     </a>
     <nav class="site-nav" aria-label="Primary">
       <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
@@ -376,9 +375,9 @@ def footer(depth):
 <footer class="site-footer" id="contact">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <span class="brand__name">Hardened Build<span class="brand__llc"> LLC</span></span>
-      <p class="footer__tagline">Secure application development across the complete software development lifecycle.</p>
-      <p class="footer__contact">Correspondence: <a href="mailto:contact@hardenedbuild.example">contact@hardenedbuild.example</a></p>
+      <span class="footer__wordmark">Hardened Builds<span class="brand__llc"> LLC</span></span>
+      <p class="footer__tagline">Application development and artificial intelligence engineering across the complete software development lifecycle.</p>
+      <p class="footer__contact">Correspondence: <a href="mailto:contact@hardenedbuilds.example">contact@hardenedbuilds.example</a></p>
     </div>
     <nav class="footer__nav" aria-label="Services">
       <h2 class="footer__heading">Services</h2>
@@ -386,7 +385,7 @@ def footer(depth):
     </nav>
   </div>
   <div class="container footer__legal">
-    <p>&copy; 2026 Hardened Build LLC. All rights reserved.</p>
+    <p>&copy; 2026 Hardened Builds LLC. All rights reserved.</p>
   </div>
 </footer>
 <script src="{prefix}site.js"></script>
@@ -419,7 +418,7 @@ def process_diagram(depth):
   <div class="container">
     <h2 id="process-heading">Process Overview</h2>
     <p class="section-lead">
-      Hardened Build LLC delivers the complete application development lifecycle as a
+      Hardened Builds LLC delivers the complete application development lifecycle as a
       governed, sequential process. Position the pointer over a phase, or activate it
       by keyboard, to review its specific activities. Select a phase to open its
       detailed description.
@@ -454,11 +453,11 @@ def build_index():
 <main id="main">
   <section class="hero" aria-labelledby="hero-heading">
     <div class="container hero__inner">
+      <img class="hero__logo" src="assets/logo-full.png" alt="Hardened Builds LLC" width="620" height="275">
       <p class="hero__eyebrow">Secure by Default. Durable by Design.</p>
-      <h1 id="hero-heading">{e(COMPANY)}</h1>
-      <p class="hero__lead">{e(TAGLINE)}</p>
+      <h1 id="hero-heading">Application Development &amp; Artificial Intelligence Engineering</h1>
       <p class="hero__sub">
-        Hardened Build LLC designs, develops, and supports artificial intelligence and
+        Hardened Builds LLC designs, develops, and supports artificial intelligence and
         application solutions across the complete software development lifecycle.
         Security, maintainability, and portability are foundational properties of every
         engagement rather than subsequent considerations.
@@ -477,7 +476,7 @@ def build_index():
       <h2 id="services-heading">Services</h2>
       <p class="section-lead">
         The following services constitute the complete lifecycle delivered by
-        Hardened Build LLC. Each service is available as part of a full engagement
+        Hardened Builds LLC. Each service is available as part of a full engagement
         or as a discrete contribution to an existing program.
       </p>
       <ul class="svc-grid">{cards}
@@ -587,7 +586,7 @@ def build_service(index):
   </nav>
 </main>"""
     title = f"{s['name']} — {COMPANY}"
-    desc = f"{s['name']}: {s['summary']} A service of Hardened Build LLC."
+    desc = f"{s['name']}: {s['summary']} A service of Hardened Builds LLC."
     return head(title, desc, 1) + header(1) + body + footer(1)
 
 
@@ -597,159 +596,166 @@ def build_service(index):
 
 STYLES = r"""
 :root{
-  --bg:#0b1220; --bg-2:#0f1a2e; --panel:#13203a; --panel-2:#17273f;
-  --ink:#e8eef6; --ink-dim:#9fb0c6; --line:#243551; --line-2:#2f4660;
-  --accent:#5eb0c8; --accent-2:#7fd1c4; --focus:#8fd3ff;
-  --radius:10px; --maxw:1140px; --step:#1a2b47;
+  --bg:#ffffff; --bg-2:#f3f6fb; --bg-3:#eaf1fb;
+  --panel:#ffffff; --panel-2:#f7f9fd;
+  --navy:#01234e; --navy-2:#0a2f63; --blue:#0072fe; --blue-ink:#0063db;
+  --ink:#11213a; --ink-2:#33425a; --ink-dim:#5b6b84; --line:#d7e0ec; --line-2:#c3d2e6;
+  --accent:#0072fe; --accent-navy:#01234e; --focus:#0072fe;
+  --radius:12px; --maxw:1160px; --step:#f3f7fd;
+  --shadow-sm:0 1px 2px rgba(1,35,78,.06), 0 2px 8px rgba(1,35,78,.05);
+  --shadow-md:0 10px 30px rgba(1,35,78,.10);
+  --shadow-lg:0 22px 50px rgba(1,35,78,.16);
   --font:'Calibri','Segoe UI',Candara,'Trebuchet MS',system-ui,-apple-system,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0; font-family:var(--font); font-size:17px; line-height:1.6;
-  color:var(--ink); background:var(--bg);
-  -webkit-font-smoothing:antialiased;
+  color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased;
 }
 .container{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px}
-a{color:var(--accent-2); text-decoration:none}
+a{color:var(--blue-ink); text-decoration:none}
 a:hover{text-decoration:underline}
-h1,h2,h3{line-height:1.2; color:var(--ink); font-weight:700; letter-spacing:-.01em}
-h1{font-size:2.6rem; margin:.2em 0 .3em}
+h1,h2,h3{line-height:1.18; color:var(--navy); font-weight:700; letter-spacing:-.01em}
+h1{font-size:2.6rem; margin:.1em 0 .3em}
 h2{font-size:1.7rem; margin:1.6em 0 .6em}
 h3{font-size:1.2rem; margin:0 0 .3em}
 p{margin:0 0 1em}
 :focus-visible{outline:3px solid var(--focus); outline-offset:2px; border-radius:4px}
 
-.skip-link{position:absolute; left:-999px; top:0; background:var(--accent); color:#04121b;
+.skip-link{position:absolute; left:-999px; top:0; background:var(--navy); color:#fff;
   padding:10px 16px; z-index:100; border-radius:0 0 8px 0; font-weight:700}
 .skip-link:focus{left:0}
 
 /* Header */
-.site-header{position:sticky; top:0; z-index:50; background:rgba(11,18,32,.92);
+.site-header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92);
   backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
-.site-header__inner{display:flex; align-items:center; justify-content:space-between; min-height:66px}
-.brand{display:inline-flex; align-items:center; gap:10px; color:var(--ink); font-weight:700; font-size:1.18rem}
+.site-header__inner{display:flex; align-items:center; justify-content:space-between; min-height:68px}
+.brand{display:inline-flex; align-items:center; gap:11px; color:var(--navy); font-weight:700; font-size:1.18rem}
 .brand:hover{text-decoration:none}
-.brand__mark{color:var(--accent)}
+.brand__mark{height:26px; width:auto; display:block}
 .brand__llc{color:var(--ink-dim); font-weight:600}
 .site-nav{display:flex; align-items:center}
-.nav-toggle{display:none; background:var(--panel); color:var(--ink); border:1px solid var(--line);
+.nav-toggle{display:none; background:var(--bg-2); color:var(--navy); border:1px solid var(--line);
   padding:8px 14px; border-radius:8px; font-family:inherit; font-size:1rem; cursor:pointer}
-.nav-menu{list-style:none; display:flex; gap:6px; margin:0; padding:0; align-items:center}
-.nav-menu>li>a{display:block; padding:10px 12px; color:var(--ink-dim); border-radius:8px; font-size:1rem}
-.nav-menu>li>a:hover{color:var(--ink); background:var(--panel); text-decoration:none}
+.nav-menu{list-style:none; display:flex; gap:4px; margin:0; padding:0; align-items:center}
+.nav-menu>li>a{display:block; padding:10px 13px; color:var(--ink-2); border-radius:8px; font-size:1rem; font-weight:600}
+.nav-menu>li>a:hover{color:var(--navy); background:var(--bg-2); text-decoration:none}
 .has-sub{position:relative}
 .sub-menu{list-style:none; margin:0; padding:8px; position:absolute; top:100%; left:0;
-  background:var(--panel-2); border:1px solid var(--line); border-radius:10px; min-width:270px;
-  box-shadow:0 18px 40px rgba(0,0,0,.4); display:none; z-index:60}
-.sub-menu li a{display:block; padding:8px 12px; color:var(--ink-dim); border-radius:6px; font-size:.97rem}
-.sub-menu li a:hover{color:var(--ink); background:var(--panel); text-decoration:none}
+  background:#fff; border:1px solid var(--line); border-radius:12px; min-width:280px;
+  box-shadow:var(--shadow-md); display:none; z-index:60}
+.sub-menu li a{display:block; padding:9px 12px; color:var(--ink-2); border-radius:7px; font-size:.97rem; font-weight:600}
+.sub-menu li a:hover{color:var(--navy); background:var(--bg-2); text-decoration:none}
 .has-sub:hover .sub-menu,.has-sub:focus-within .sub-menu{display:block}
 
 /* Hero */
 .hero{background:
-  radial-gradient(1100px 500px at 78% -10%, rgba(94,176,200,.16), transparent 60%),
-  linear-gradient(180deg,var(--bg-2),var(--bg)); border-bottom:1px solid var(--line)}
-.hero__inner{padding:84px 24px 76px; max-width:900px}
+  radial-gradient(900px 440px at 82% -12%, rgba(0,114,254,.10), transparent 62%),
+  linear-gradient(180deg,#ffffff,var(--bg-2)); border-bottom:1px solid var(--line)}
+.hero__inner{padding:64px 24px 72px; max-width:900px}
+.hero__logo{display:block; width:min(560px,86%); height:auto; margin:0 0 30px}
 .hero__eyebrow{text-transform:uppercase; letter-spacing:.16em; font-size:.84rem; font-weight:700;
-  color:var(--accent); margin:0 0 14px}
-.hero__lead{font-size:1.35rem; color:var(--ink); margin:0 0 .7em; font-weight:600}
-.hero__sub{font-size:1.08rem; color:var(--ink-dim); max-width:720px}
-.hero__actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:26px}
+  color:var(--blue-ink); margin:0 0 12px}
+.hero h1{font-size:2.5rem; max-width:760px}
+.hero__sub{font-size:1.1rem; color:var(--ink-2); max-width:720px; margin-top:.2em}
+.hero__actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:28px}
 
-.btn{display:inline-block; padding:13px 24px; border-radius:9px; font-weight:700; font-size:1rem;
-  border:1px solid transparent; cursor:pointer; transition:transform .05s ease}
+.btn{display:inline-block; padding:13px 26px; border-radius:9px; font-weight:700; font-size:1rem;
+  border:2px solid transparent; cursor:pointer; transition:transform .05s ease, box-shadow .15s}
 .btn:hover{text-decoration:none; transform:translateY(-1px)}
-.btn--primary{background:var(--accent); color:#04121b}
-.btn--ghost{background:transparent; color:var(--ink); border-color:var(--line-2); border-color:var(--line)}
-.btn--ghost:hover{background:var(--panel)}
+.btn--primary{background:var(--blue); color:#fff; box-shadow:0 6px 18px rgba(0,114,254,.28)}
+.btn--primary:hover{background:var(--blue-ink)}
+.btn--ghost{background:#fff; color:var(--navy); border-color:var(--line-2)}
+.btn--ghost:hover{background:var(--bg-2); border-color:var(--blue)}
 .btn--block{display:block; text-align:center; width:100%}
 
-.section-lead{font-size:1.08rem; color:var(--ink-dim); max-width:760px}
+.section-lead{font-size:1.1rem; color:var(--ink-2); max-width:770px}
 
 /* Process diagram */
-.process{padding:72px 0; background:var(--bg)}
-.process__flow{list-style:none; margin:28px 0 0; padding:0;
+.process{padding:76px 0; background:#fff}
+.process__flow{list-style:none; margin:30px 0 0; padding:0;
   display:grid; grid-template-columns:repeat(5,1fr); gap:16px}
 .pstep{position:relative}
 .pstep__trigger{display:block; height:100%; background:var(--step); border:1px solid var(--line);
-  border-radius:var(--radius); padding:16px 16px 18px; color:var(--ink); transition:border-color .15s, background .15s}
-.pstep__trigger:hover,.pstep__trigger:focus-visible{text-decoration:none; border-color:var(--accent);
-  background:var(--panel-2)}
-.pstep__num{display:inline-block; font-size:.84rem; font-weight:700; letter-spacing:.08em;
-  color:var(--accent); background:rgba(94,176,200,.12); border:1px solid rgba(94,176,200,.3);
-  border-radius:6px; padding:2px 8px; margin-bottom:10px}
-.pstep__name{display:block; font-weight:700; font-size:1.02rem; margin-bottom:5px}
+  border-radius:var(--radius); padding:16px 16px 18px; color:var(--ink);
+  transition:border-color .15s, background .15s, box-shadow .15s, transform .05s}
+.pstep__trigger:hover,.pstep__trigger:focus-visible{text-decoration:none; border-color:var(--blue);
+  background:#fff; box-shadow:var(--shadow-md); transform:translateY(-2px)}
+.pstep__num{display:inline-block; font-size:.84rem; font-weight:700; letter-spacing:.06em;
+  color:#fff; background:var(--navy); border-radius:6px; padding:3px 9px; margin-bottom:10px}
+.pstep__name{display:block; font-weight:700; font-size:1.02rem; margin-bottom:5px; color:var(--navy)}
 .pstep__summary{display:block; font-size:.9rem; color:var(--ink-dim); line-height:1.45}
-/* connector arrows between nodes on the same row */
 .pstep::after{content:""; position:absolute; top:34px; right:-13px; width:14px; height:2px;
-  background:var(--line); z-index:1}
+  background:var(--line-2); z-index:1}
 .pstep::before{content:""; position:absolute; top:30px; right:-16px; border:5px solid transparent;
-  border-left-color:var(--line); z-index:2}
+  border-left-color:var(--line-2); z-index:2}
 .pstep:nth-child(5n)::after,.pstep:nth-child(5n)::before,.pstep:last-child::after,.pstep:last-child::before{display:none}
 
 .pstep__bubble{position:absolute; left:0; top:calc(100% + 10px); width:300px; max-width:84vw;
-  background:var(--panel-2); border:1px solid var(--accent); border-radius:12px; padding:16px 18px;
-  box-shadow:0 20px 48px rgba(0,0,0,.5); z-index:40; opacity:0; visibility:hidden;
+  background:#fff; border:1px solid var(--blue); border-radius:12px; padding:16px 18px;
+  box-shadow:var(--shadow-lg); z-index:40; opacity:0; visibility:hidden;
   transform:translateY(-6px); transition:opacity .15s, transform .15s}
 .pstep__bubble::before{content:""; position:absolute; top:-7px; left:28px; width:12px; height:12px;
-  background:var(--panel-2); border-left:1px solid var(--accent); border-top:1px solid var(--accent);
-  transform:rotate(45deg)}
+  background:#fff; border-left:1px solid var(--blue); border-top:1px solid var(--blue); transform:rotate(45deg)}
 .pstep:hover .pstep__bubble,.pstep:focus-within .pstep__bubble,.pstep.is-pinned .pstep__bubble{
   opacity:1; visibility:visible; transform:translateY(0)}
 .pstep:nth-child(5n) .pstep__bubble,.pstep:nth-child(5n - 1) .pstep__bubble{left:auto; right:0}
 .pstep:nth-child(5n) .pstep__bubble::before,.pstep:nth-child(5n - 1) .pstep__bubble::before{left:auto; right:28px}
-.pstep__bubble-title{font-weight:700; margin:0 0 8px; color:var(--accent-2)}
+.pstep__bubble-title{font-weight:700; margin:0 0 8px; color:var(--navy)}
 .pstep__bubble ul{margin:0 0 10px; padding-left:18px}
-.pstep__bubble li{font-size:.92rem; color:var(--ink); margin-bottom:5px; line-height:1.4}
+.pstep__bubble li{font-size:.92rem; color:var(--ink-2); margin-bottom:5px; line-height:1.4}
 .pstep__bubble-link{font-size:.9rem; font-weight:700}
 .process__hint{margin-top:22px; color:var(--ink-dim); font-size:.95rem}
 .process__download{margin-top:4px; font-size:.95rem}
 
 /* Services grid */
-.services{padding:72px 0; background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-.svc-grid{list-style:none; margin:28px 0 0; padding:0;
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px}
-.svc-card a{display:block; height:100%; background:var(--panel); border:1px solid var(--line);
-  border-radius:var(--radius); padding:20px; color:var(--ink); transition:border-color .15s, transform .05s}
-.svc-card a:hover{text-decoration:none; border-color:var(--accent); transform:translateY(-2px)}
-.svc-card__num{display:block; font-size:.84rem; font-weight:700; color:var(--accent); letter-spacing:.08em; margin-bottom:8px}
-.svc-card__name{display:block; font-weight:700; font-size:1.08rem; margin-bottom:6px}
+.services{padding:76px 0; background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.svc-grid{list-style:none; margin:30px 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(244px,1fr)); gap:16px}
+.svc-card a{display:block; height:100%; background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius); padding:20px; color:var(--ink); box-shadow:var(--shadow-sm);
+  transition:border-color .15s, transform .05s, box-shadow .15s}
+.svc-card a:hover{text-decoration:none; border-color:var(--blue); transform:translateY(-2px); box-shadow:var(--shadow-md)}
+.svc-card__num{display:block; font-size:.84rem; font-weight:700; color:var(--blue-ink); letter-spacing:.06em; margin-bottom:8px}
+.svc-card__name{display:block; font-weight:700; font-size:1.08rem; margin-bottom:6px; color:var(--navy)}
 .svc-card__summary{display:block; font-size:.93rem; color:var(--ink-dim); line-height:1.45}
 
 /* Principles */
-.principles{padding:72px 0}
-.principle-list{list-style:none; margin:28px 0 0; padding:0;
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px}
-.principle-list li{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent);
-  border-radius:var(--radius); padding:20px}
-.principle-list p{margin:0; color:var(--ink-dim); font-size:.97rem}
+.principles{padding:76px 0; background:#fff}
+.principle-list{list-style:none; margin:30px 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(262px,1fr)); gap:20px}
+.principle-list li{background:var(--bg-2); border:1px solid var(--line); border-left:4px solid var(--blue);
+  border-radius:var(--radius); padding:22px}
+.principle-list h3{color:var(--navy)}
+.principle-list p{margin:0; color:var(--ink-2); font-size:.97rem}
 
 /* Service page */
-.svc-hero{background:linear-gradient(180deg,var(--bg-2),var(--bg)); border-bottom:1px solid var(--line);
-  padding:40px 0 44px}
+.svc-hero{background:linear-gradient(180deg,#ffffff,var(--bg-2)); border-bottom:1px solid var(--line); padding:38px 0 44px}
 .breadcrumb{font-size:.9rem; color:var(--ink-dim); margin-bottom:18px; display:flex; gap:8px; flex-wrap:wrap}
-.breadcrumb a{color:var(--ink-dim)} .breadcrumb a:hover{color:var(--accent-2)}
-.svc-hero__phase{text-transform:uppercase; letter-spacing:.14em; font-size:.84rem; font-weight:700;
-  color:var(--accent); margin:0 0 10px}
-.svc-hero__summary{font-size:1.2rem; color:var(--ink-dim); max-width:760px; margin:0}
+.breadcrumb a{color:var(--ink-dim)} .breadcrumb a:hover{color:var(--blue-ink)}
+.svc-hero__phase{text-transform:uppercase; letter-spacing:.14em; font-size:.84rem; font-weight:700; color:var(--blue-ink); margin:0 0 10px}
+.svc-hero__summary{font-size:1.2rem; color:var(--ink-2); max-width:760px; margin:0}
 .svc-body{padding:52px 0}
 .svc-body__grid{display:grid; grid-template-columns:1fr 340px; gap:40px; align-items:start}
+.svc-body__main h2{color:var(--navy)}
+.svc-body__main p{color:var(--ink-2)}
 .deliver-list{margin:0; padding:0; list-style:none}
-.deliver-list li{position:relative; padding:0 0 14px 30px; color:var(--ink); line-height:1.55}
+.deliver-list li{position:relative; padding:0 0 14px 30px; color:var(--ink-2); line-height:1.55}
 .deliver-list li::before{content:""; position:absolute; left:4px; top:9px; width:10px; height:10px;
-  border:2px solid var(--accent); border-radius:2px; transform:rotate(45deg)}
-.aside-card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
-  padding:22px; margin-bottom:18px; position:sticky; top:84px}
-.aside-card--muted{position:static; background:var(--panel-2)}
-.aside-card__title{font-size:1.05rem; margin:0 0 12px; color:var(--accent-2)}
+  border:2px solid var(--blue); border-radius:2px; transform:rotate(45deg)}
+.aside-card{background:var(--bg-2); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px; margin-bottom:18px; position:sticky; top:86px}
+.aside-card--muted{position:static; background:var(--navy); border-color:var(--navy)}
+.aside-card__title{font-size:1.05rem; margin:0 0 12px; color:var(--navy)}
 .aside-card__list{margin:0; padding-left:18px}
-.aside-card__list li{margin-bottom:8px; color:var(--ink); font-size:.96rem; line-height:1.45}
-.aside-card--muted p{color:var(--ink-dim); font-size:.95rem}
+.aside-card__list li{margin-bottom:8px; color:var(--ink-2); font-size:.96rem; line-height:1.45}
+.aside-card--muted .aside-card__title{color:#fff}
+.aside-card--muted p{color:#c6d6ee; font-size:.95rem}
 
 .phase-nav{border-top:1px solid var(--line); background:var(--bg-2)}
 .phase-nav__inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 24px}
-.phase-nav__link{display:flex; flex-direction:column; color:var(--ink); max-width:40%}
+.phase-nav__link{display:flex; flex-direction:column; color:var(--navy); max-width:40%}
 .phase-nav__next{text-align:right; align-items:flex-end}
 .phase-nav__dir{font-size:.84rem; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-dim)}
 .phase-nav__name{font-weight:700}
@@ -757,18 +763,21 @@ p{margin:0 0 1em}
 .phase-nav__spacer{flex:1}
 
 /* Footer */
-.site-footer{background:var(--bg-2); border-top:1px solid var(--line); padding:48px 0 0; margin-top:0}
+.site-footer{background:var(--navy); color:#d6e2f3; padding:48px 0 0; margin-top:0}
 .footer__inner{display:grid; grid-template-columns:1.2fr 2fr; gap:40px; padding-bottom:36px}
-.footer__tagline{color:var(--ink-dim); font-size:.95rem; max-width:320px}
-.footer__contact{color:var(--ink-dim); font-size:.95rem}
-.footer__heading{font-size:1rem; margin:0 0 14px; color:var(--ink)}
+.footer__wordmark{font-weight:700; font-size:1.22rem; color:#fff; letter-spacing:-.01em}
+.footer__wordmark .brand__llc{color:#8fb6ec; font-weight:600}
+.footer__tagline{color:#b7c8e2; font-size:.95rem; max-width:340px; margin-top:.7em}
+.footer__contact{color:#b7c8e2; font-size:.95rem}
+.footer__contact a{color:#9fc2ff}
+.footer__heading{font-size:1rem; margin:0 0 14px; color:#fff}
 .footer__cols{display:grid; grid-template-columns:1fr 1fr; gap:10px 28px}
 .footer__list{list-style:none; margin:0; padding:0}
 .footer__list li{margin-bottom:9px}
-.footer__list a{color:var(--ink-dim); font-size:.94rem}
-.footer__list a:hover{color:var(--accent-2)}
-.footer__legal{border-top:1px solid var(--line); padding:18px 24px; }
-.footer__legal p{margin:0; color:var(--ink-dim); font-size:.88rem}
+.footer__list a{color:#b7c8e2; font-size:.94rem}
+.footer__list a:hover{color:#fff}
+.footer__legal{border-top:1px solid rgba(255,255,255,.14); padding:18px 24px}
+.footer__legal p{margin:0; color:#9fb0cc; font-size:.88rem}
 
 /* Responsive */
 @media (max-width:980px){
@@ -782,10 +791,11 @@ p{margin:0 0 1em}
   .footer__inner{grid-template-columns:1fr}
 }
 @media (max-width:720px){
-  h1{font-size:2.05rem}
+  h1,.hero h1{font-size:2.05rem}
   .nav-toggle{display:block}
-  .nav-menu{position:absolute; top:66px; left:0; right:0; flex-direction:column; align-items:stretch;
-    background:var(--panel-2); border-bottom:1px solid var(--line); padding:10px 16px; gap:2px; display:none}
+  .nav-menu{position:absolute; top:68px; left:0; right:0; flex-direction:column; align-items:stretch;
+    background:#fff; border-bottom:1px solid var(--line); padding:10px 16px; gap:2px; display:none;
+    box-shadow:var(--shadow-md)}
   .nav-menu.is-open{display:flex}
   .sub-menu{position:static; display:block; border:none; box-shadow:none; background:transparent; padding:0 0 6px 12px; min-width:0}
   .has-sub:hover .sub-menu{display:block}
@@ -861,15 +871,15 @@ def build_process_svg():
     parts.append(
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
         f'font-family="Calibri, Segoe UI, sans-serif" role="img" '
-        f'aria-label="Hardened Build LLC software development lifecycle process overview">'
+        f'aria-label="Hardened Builds LLC software development lifecycle process overview">'
     )
-    parts.append(f'<rect width="{W}" height="{H}" fill="#0b1220"/>')
+    parts.append(f'<rect width="{W}" height="{H}" fill="#ffffff"/>')
     parts.append(
-        f'<text x="{W/2}" y="56" fill="#e8eef6" font-size="34" font-weight="700" '
-        f'text-anchor="middle">Hardened Build LLC — Software Development Lifecycle</text>'
+        f'<text x="{W/2}" y="56" fill="#01234e" font-size="34" font-weight="700" '
+        f'text-anchor="middle">Hardened Builds LLC — Software Development Lifecycle</text>'
     )
     parts.append(
-        f'<text x="{W/2}" y="92" fill="#9fb0c6" font-size="19" text-anchor="middle">'
+        f'<text x="{W/2}" y="92" fill="#5b6b84" font-size="19" text-anchor="middle">'
         f'A governed, sequential process across ten lifecycle phases</text>'
     )
 
@@ -888,7 +898,7 @@ def build_process_svg():
     parts.append(
         '<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" '
         'orient="auto" markerUnits="strokeWidth">'
-        '<path d="M0,0 L8,3 L0,6 Z" fill="#5eb0c8"/></marker></defs>'
+        '<path d="M0,0 L8,3 L0,6 Z" fill="#0072fe"/></marker></defs>'
     )
     for i in range(len(SERVICES) - 1):
         ax, ay, aw, ah = pos[i]
@@ -902,7 +912,7 @@ def build_process_svg():
             x1, y1, x2, y2 = ax + aw/2, ay + ah, bx + bw/2, by
         parts.append(
             f'<line x1="{x1:.0f}" y1="{y1:.0f}" x2="{x2:.0f}" y2="{y2:.0f}" '
-            f'stroke="#3a5a78" stroke-width="2.5" marker-end="url(#arr)"/>'
+            f'stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>'
         )
 
     # boxes
@@ -922,17 +932,17 @@ def build_process_svg():
         x, y, w, h = pos[i]
         parts.append(
             f'<rect x="{x:.0f}" y="{y:.0f}" width="{w:.0f}" height="{h:.0f}" rx="12" '
-            f'fill="#17273f" stroke="#5eb0c8" stroke-width="1.5"/>'
+            f'fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>'
         )
         parts.append(
-            f'<text x="{x+18:.0f}" y="{y+34:.0f}" fill="#5eb0c8" font-size="18" '
+            f'<text x="{x+18:.0f}" y="{y+34:.0f}" fill="#0072fe" font-size="18" '
             f'font-weight="700">{s["number"]:02d}</text>'
         )
         name_lines = wrap(s["name"], 20)
         ty = y + 64
         for ln in name_lines:
             parts.append(
-                f'<text x="{x+18:.0f}" y="{ty:.0f}" fill="#e8eef6" font-size="20" '
+                f'<text x="{x+18:.0f}" y="{ty:.0f}" fill="#01234e" font-size="20" '
                 f'font-weight="700">{html.escape(ln)}</text>'
             )
             ty += 24
@@ -940,13 +950,13 @@ def build_process_svg():
         ty += 4
         for ln in sum_lines[:2]:
             parts.append(
-                f'<text x="{x+18:.0f}" y="{ty:.0f}" fill="#9fb0c6" font-size="14">'
+                f'<text x="{x+18:.0f}" y="{ty:.0f}" fill="#5b6b84" font-size="14">'
                 f'{html.escape(ln)}</text>'
             )
             ty += 18
 
     parts.append(
-        f'<text x="{W-70}" y="{H-24}" fill="#5f7391" font-size="14" '
+        f'<text x="{W-70}" y="{H-24}" fill="#8aa0bf" font-size="14" '
         f'text-anchor="end">hardenedbuild — process overview</text>'
     )
     parts.append("</svg>")
@@ -957,7 +967,7 @@ def build_process_svg():
 # Security headers (canonical, server-set) and documented public allowlist
 # ---------------------------------------------------------------------------
 
-HEADERS_FILE = f"""# Security response headers for Hardened Build LLC (static site).
+HEADERS_FILE = f"""# Security response headers for Hardened Builds LLC (static site).
 # Format: netlify / Fine Structure style `_headers`. These are the canonical,
 # server-set headers. Equivalent <meta> directives are embedded in each page as
 # defense in depth, but HSTS and X-Content-Type-Options MUST be set here (HTTP
@@ -982,6 +992,10 @@ ROUTES_ALLOWLIST = """{
     "/styles.css",
     "/site.js",
     "/assets/process-overview.svg",
+    "/assets/logo-full.png",
+    "/assets/logo-mark.png",
+    "/assets/favicon.png",
+    "/assets/apple-touch-icon.png",
     "/services/business-requirements.html",
     "/services/solution-architecture.html",
     "/services/ai-app-design.html",
@@ -1031,6 +1045,12 @@ def main():
     write("_headers", HEADERS_FILE)
     write("routes.config.json", ROUTES_ALLOWLIST)
     write("robots.txt", ROBOTS)
+
+    # Copy static brand assets (logo lockup, emblem mark, icons) from source.
+    assets_src = os.path.join(ROOT, "assets_src")
+    os.makedirs(os.path.join(DIST, "assets"), exist_ok=True)
+    for name in ("logo-full.png", "logo-mark.png", "favicon.png", "apple-touch-icon.png"):
+        shutil.copyfile(os.path.join(assets_src, name), os.path.join(DIST, "assets", name))
 
     pages = 1 + len(SERVICES)
     print(f"Generated {pages} HTML pages + assets into {DIST}")
