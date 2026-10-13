@@ -1,0 +1,28 @@
+{
+  "_comment": "Single source of truth for route authorization policy. This is a public marketing website: it holds no user data and exposes no authenticated surface or API. The authorization model is therefore default-deny with an explicit public allowlist, where every served route is enumerated below as public. When an authenticated surface is later added (for example, a client portal), it MUST NOT be added to this allowlist; it must sit behind authentication, with unauthenticated page requests redirected to login and unauthenticated API requests answered with HTTP 401, and authenticated-but-unauthorized requests answered with HTTP 403.",
+  "policy": "default-deny",
+  "public_routes": [
+    "/",
+    "/index.html",
+    "/styles.css",
+    "/site.js",
+    "/assets/process-overview.svg",
+    "/services/business-requirements.html",
+    "/services/solution-architecture.html",
+    "/services/ai-app-design.html",
+    "/services/ai-app-development.html",
+    "/services/qa-testing.html",
+    "/services/uat-testing-support.html",
+    "/services/deployment-support.html",
+    "/services/post-deployment-testing-support.html",
+    "/services/post-deployment-hypercare.html",
+    "/services/post-deployment-support.html"
+  ],
+  "authenticated_routes": [],
+  "responses": {
+    "unauthenticated_page_request": "302 redirect to /login",
+    "unauthenticated_api_request": "401 Unauthorized",
+    "authenticated_unauthorized_request": "403 Forbidden"
+  },
+  "data_exposure": "No user data is present in initial HTML, client bundles, or error messages."
+}

@@ -1,0 +1,14 @@
+# Security response headers for Hardened Build LLC (static site).
+# Format: netlify / Fine Structure style `_headers`. These are the canonical,
+# server-set headers. Equivalent <meta> directives are embedded in each page as
+# defense in depth, but HSTS and X-Content-Type-Options MUST be set here (HTTP
+# headers only). Apply equivalent configuration on the destination host when the
+# site is migrated to the client platform.
+/*
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Cross-Origin-Opener-Policy: same-origin
