@@ -1,71 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" font-family="Calibri, Segoe UI, sans-serif" role="img" aria-label="Hardened Builds LLC software development lifecycle process overview">
-<rect width="1600" height="760" fill="#ffffff"/>
-<text x="800.0" y="56" fill="#01234e" font-size="34" font-weight="700" text-anchor="middle">Hardened Builds LLC — Software Development Lifecycle</text>
-<text x="800.0" y="92" fill="#5b6b84" font-size="19" text-anchor="middle">A governed, sequential process across ten lifecycle phases</text>
-<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#0072fe"/></marker></defs>
-<line x1="330" y1="225" x2="370" y2="225" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<line x1="630" y1="225" x2="670" y2="225" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<line x1="930" y1="225" x2="970" y2="225" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<line x1="1230" y1="225" x2="1270" y2="225" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<line x1="1400" y1="300" x2="1400" y2="390" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<line x1="1270" y1="465" x2="1230" y2="465" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<line x1="970" y1="465" x2="930" y2="465" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<line x1="670" y1="465" x2="630" y2="465" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<line x1="370" y1="465" x2="330" y2="465" stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>
-<rect x="70" y="150" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="88" y="184" fill="#0072fe" font-size="18" font-weight="700">01</text>
-<text x="88" y="214" fill="#01234e" font-size="20" font-weight="700">Business</text>
-<text x="88" y="238" fill="#01234e" font-size="20" font-weight="700">Requirements</text>
-<text x="88" y="266" fill="#5b6b84" font-size="14">Elicitation and formalization</text>
-<text x="88" y="284" fill="#5b6b84" font-size="14">of stakeholder objectives.</text>
-<rect x="370" y="150" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="388" y="184" fill="#0072fe" font-size="18" font-weight="700">02</text>
-<text x="388" y="214" fill="#01234e" font-size="20" font-weight="700">Solution</text>
-<text x="388" y="238" fill="#01234e" font-size="20" font-weight="700">Architecture</text>
-<text x="388" y="266" fill="#5b6b84" font-size="14">Definition of system</text>
-<text x="388" y="284" fill="#5b6b84" font-size="14">structure, technology, and</text>
-<rect x="670" y="150" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="688" y="184" fill="#0072fe" font-size="18" font-weight="700">03</text>
-<text x="688" y="214" fill="#01234e" font-size="20" font-weight="700">AI/App Design</text>
-<text x="688" y="242" fill="#5b6b84" font-size="14">Detailed design of interfaces,</text>
-<text x="688" y="260" fill="#5b6b84" font-size="14">data, and model interactions.</text>
-<rect x="970" y="150" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="988" y="184" fill="#0072fe" font-size="18" font-weight="700">04</text>
-<text x="988" y="214" fill="#01234e" font-size="20" font-weight="700">AI/App Development</text>
-<text x="988" y="242" fill="#5b6b84" font-size="14">Implementation of the approved</text>
-<text x="988" y="260" fill="#5b6b84" font-size="14">design.</text>
-<rect x="1270" y="150" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="1288" y="184" fill="#0072fe" font-size="18" font-weight="700">05</text>
-<text x="1288" y="214" fill="#01234e" font-size="20" font-weight="700">QA Testing</text>
-<text x="1288" y="242" fill="#5b6b84" font-size="14">Independent verification of</text>
-<text x="1288" y="260" fill="#5b6b84" font-size="14">quality and correctness.</text>
-<rect x="1270" y="390" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="1288" y="424" fill="#0072fe" font-size="18" font-weight="700">06</text>
-<text x="1288" y="454" fill="#01234e" font-size="20" font-weight="700">UAT Testing Support</text>
-<text x="1288" y="482" fill="#5b6b84" font-size="14">Support of user acceptance</text>
-<text x="1288" y="500" fill="#5b6b84" font-size="14">activities.</text>
-<rect x="970" y="390" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="988" y="424" fill="#0072fe" font-size="18" font-weight="700">07</text>
-<text x="988" y="454" fill="#01234e" font-size="20" font-weight="700">Deployment Support</text>
-<text x="988" y="482" fill="#5b6b84" font-size="14">Controlled release to the</text>
-<text x="988" y="500" fill="#5b6b84" font-size="14">production environment.</text>
-<rect x="670" y="390" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="688" y="424" fill="#0072fe" font-size="18" font-weight="700">08</text>
-<text x="688" y="454" fill="#01234e" font-size="20" font-weight="700">Post-deployment</text>
-<text x="688" y="478" fill="#01234e" font-size="20" font-weight="700">Testing Support</text>
-<text x="688" y="506" fill="#5b6b84" font-size="14">Verification of system</text>
-<text x="688" y="524" fill="#5b6b84" font-size="14">behavior in production.</text>
-<rect x="370" y="390" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="388" y="424" fill="#0072fe" font-size="18" font-weight="700">09</text>
-<text x="388" y="454" fill="#01234e" font-size="20" font-weight="700">Post-deployment</text>
-<text x="388" y="478" fill="#01234e" font-size="20" font-weight="700">HyperCare</text>
-<text x="388" y="506" fill="#5b6b84" font-size="14">Heightened support during the</text>
-<text x="388" y="524" fill="#5b6b84" font-size="14">stabilization period.</text>
-<rect x="70" y="390" width="260" height="150" rx="12" fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>
-<text x="88" y="424" fill="#0072fe" font-size="18" font-weight="700">10</text>
-<text x="88" y="454" fill="#01234e" font-size="20" font-weight="700">Post-deployment</text>
-<text x="88" y="478" fill="#01234e" font-size="20" font-weight="700">Support</text>
-<text x="88" y="506" fill="#5b6b84" font-size="14">Ongoing maintenance and</text>
-<text x="88" y="524" fill="#5b6b84" font-size="14">operational support.</text>
-<text x="1530" y="736" fill="#8aa0bf" font-size="14" text-anchor="end">hardenedbuild — process overview</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 720" font-family="Calibri, Segoe UI, sans-serif" role="img" aria-label="Hardened Builds LLC application development lifecycle: ten sequential phases">
+<rect width="860" height="720" fill="#ffffff"/>
+<g><path class="wseg__shape" d="M 432.96 128.02 A 212.0 212.0 0 0 1 552.20 166.77 L 539.73 210.15 L 503.78 235.41 A 128.0 128.0 0 0 0 431.79 212.01 L 417.55 170.46 Z" fill="#0072fe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(479.57,142.59) scale(0.917)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></g><text class="wseg__num" x="478.2" y="196.6" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">01</text><text class="wseg__label" text-anchor="start" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="507.3" y="102.2">Requirements</tspan></text></g>
+<g><path class="wseg__shape" d="M 556.99 170.24 A 212.0 212.0 0 0 1 630.69 271.68 L 595.09 299.45 L 551.17 298.75 A 128.0 128.0 0 0 0 506.68 237.51 L 519.58 195.52 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(577.57,213.79) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1" /> <rect x="2" y="16" width="6" height="6" rx="1" /> <rect x="9" y="2" width="6" height="6" rx="1" /> <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /> <path d="M12 12V8" /></g><text class="wseg__num" x="556.2" y="253.3" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">02</text><text class="wseg__label" text-anchor="start" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="632.3" y="193.1">Architecture</tspan></text></g>
+<g><path class="wseg__shape" d="M 632.52 277.31 A 212.0 212.0 0 0 1 632.52 402.69 L 587.40 404.23 L 552.28 377.85 A 128.0 128.0 0 0 0 552.28 302.15 L 587.40 275.77 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(615.00,329.00) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M9 21V9" /></g><text class="wseg__num" x="586.0" y="345.0" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">03</text><text class="wseg__label" text-anchor="start" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="680.0" y="340.0">App design</tspan></text></g>
+<g><path class="wseg__shape" d="M 630.69 408.32 A 212.0 212.0 0 0 1 556.99 509.76 L 519.58 484.48 L 506.68 442.49 A 128.0 128.0 0 0 0 551.17 381.25 L 595.09 380.55 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(577.57,444.21) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4" /> <path d="m6 8-4 4 4 4" /> <path d="m14.5 4-5 16" /></g><text class="wseg__num" x="556.2" y="436.7" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">04</text><text class="wseg__label" text-anchor="start" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="632.3" y="486.9">Development</tspan></text></g>
+<g><path class="wseg__shape" d="M 552.20 513.23 A 212.0 212.0 0 0 1 432.96 551.98 L 417.55 509.54 L 431.79 467.99 A 128.0 128.0 0 0 0 503.78 444.59 L 539.73 469.85 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(479.57,515.41) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v17.5A2.5 2.5 0 0 1 6.5 22A2.5 2.5 0 0 1 4 19.5V2" /> <path d="M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5a2.5 2.5 0 0 1-2.5-2.5V2" /> <path d="M3 2h7" /> <path d="M14 2h7" /> <path d="M9 16H4" /> <path d="M20 16h-5" /></g><text class="wseg__num" x="478.2" y="493.4" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">05</text><text class="wseg__label" text-anchor="start" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="507.3" y="577.8">App testing</tspan></text></g>
+<g><path class="wseg__shape" d="M 427.04 551.98 A 212.0 212.0 0 0 1 307.80 513.23 L 320.27 469.85 L 356.22 444.59 A 128.0 128.0 0 0 0 428.21 467.99 L 442.45 509.54 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(358.43,515.41) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 11 2 2 4-4" /> <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /></g><text class="wseg__num" x="381.8" y="493.4" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">06</text><text class="wseg__label" text-anchor="end" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="352.7" y="577.8">UAT support</tspan></text></g>
+<g><path class="wseg__shape" d="M 303.01 509.76 A 212.0 212.0 0 0 1 229.31 408.32 L 264.91 380.55 L 308.83 381.25 A 128.0 128.0 0 0 0 353.32 442.49 L 340.42 484.48 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(260.43,444.21) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V12" /> <path d="m16 17 2 2 4-4" /> <path d="M21 11.127V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.729l7 4a2 2 0 0 0 2 .001l1.32-.753" /> <path d="M3.29 7 12 12l8.71-5" /> <path d="m7.5 4.27 8.997 5.148" /></g><text class="wseg__num" x="303.8" y="436.7" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">07</text><text class="wseg__label" text-anchor="end" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="227.7" y="486.9">Pre-deploy</tspan></text></g>
+<g><path class="wseg__shape" d="M 227.48 402.69 A 212.0 212.0 0 0 1 227.48 277.31 L 272.60 275.77 L 307.72 302.15 A 128.0 128.0 0 0 0 307.72 377.85 L 272.60 404.23 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(223.00,329.00) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 11 2 2 4-4" /> <circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /></g><text class="wseg__num" x="274.0" y="345.0" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">08</text><text class="wseg__label" text-anchor="end" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="180.0" y="331.0">Post-deploy</tspan><tspan x="180.0" y="349.0">testing</tspan></text></g>
+<g><path class="wseg__shape" d="M 229.31 271.68 A 212.0 212.0 0 0 1 303.01 170.24 L 340.42 195.52 L 353.32 237.51 A 128.0 128.0 0 0 0 308.83 298.75 L 264.91 299.45 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(260.43,213.79) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" /></g><text class="wseg__num" x="303.8" y="253.3" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">09</text><text class="wseg__label" text-anchor="end" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="227.7" y="193.1">Hypercare</tspan></text></g>
+<g><path class="wseg__shape" d="M 307.80 166.77 A 212.0 212.0 0 0 1 427.04 128.02 L 442.45 170.46 L 428.21 212.01 A 128.0 128.0 0 0 0 356.22 235.41 L 320.27 210.15 Z" fill="#dceafe" stroke="#ffffff" stroke-width="2"/><g class="wseg__icon" transform="translate(358.43,142.59) scale(0.917)" fill="none" stroke="#1b3b63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" /> <path d="M21 16v2a4 4 0 0 1-4 4h-5" /></g><text class="wseg__num" x="381.8" y="196.6" text-anchor="middle" font-size="17" font-weight="700" fill="#1b3b63">10</text><text class="wseg__label" text-anchor="end" font-size="15.5" font-weight="600" fill="#33425a"><tspan x="352.7" y="93.2">Ongoing</tspan><tspan x="352.7" y="111.2">support</tspan></text></g>
+<circle cx="430.0" cy="340.0" r="114.0" fill="#eef3f9" stroke="#d7e0ec" stroke-width="1.5"/>
+<text x="430.0" y="316.0" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="#33425a">HARDENED BUILDS</text>
+<text x="430.0" y="348.0" text-anchor="middle" font-size="34" font-weight="700" fill="#01234e">SDLC</text>
+<text x="430.0" y="374.0" text-anchor="middle" font-size="14" fill="#33425a">Application lifecycle</text>
 </svg>
