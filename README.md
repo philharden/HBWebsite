@@ -31,3 +31,9 @@ and `routes.config.json`.
 
 The contents of `dist/` are the deployable artifact. Publish that directory to any static
 host. No build step is required at the host; `build.py` runs only to regenerate content.
+
+## Third-party assets
+
+The SDLC lifecycle diagram uses icons from Lucide (https://lucide.dev), which are
+licensed under the ISC License. The icon paths are inlined into the generated SVG;
+there is no runtime dependency on any external icon library or content delivery network.

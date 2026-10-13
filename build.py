@@ -8,6 +8,7 @@ dependencies; standard library only.
 """
 
 import html
+import math
 import os
 import shutil
 
@@ -291,6 +292,142 @@ SERVICES = [
     },
 ]
 
+
+# ---------------------------------------------------------------------------
+# Radial SDLC wheel (self-contained SVG; inlined Lucide icons, ISC licensed)
+# ---------------------------------------------------------------------------
+
+WHEEL_ICONS = {
+    "clipboard-list": "<rect width=\"8\" height=\"4\" x=\"8\" y=\"2\" rx=\"1\" ry=\"1\" /> <path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\" /> <path d=\"M12 11h4\" /> <path d=\"M12 16h4\" /> <path d=\"M8 11h.01\" /> <path d=\"M8 16h.01\" />",
+    "network": "<rect x=\"16\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\" /> <rect x=\"2\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\" /> <rect x=\"9\" y=\"2\" width=\"6\" height=\"6\" rx=\"1\" /> <path d=\"M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3\" /> <path d=\"M12 12V8\" />",
+    "panels-top-left": "<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\" /> <path d=\"M3 9h18\" /> <path d=\"M9 21V9\" />",
+    "code-xml": "<path d=\"m18 16 4-4-4-4\" /> <path d=\"m6 8-4 4 4 4\" /> <path d=\"m14.5 4-5 16\" />",
+    "test-tubes": "<path d=\"M9 2v17.5A2.5 2.5 0 0 1 6.5 22A2.5 2.5 0 0 1 4 19.5V2\" /> <path d=\"M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5a2.5 2.5 0 0 1-2.5-2.5V2\" /> <path d=\"M3 2h7\" /> <path d=\"M14 2h7\" /> <path d=\"M9 16H4\" /> <path d=\"M20 16h-5\" />",
+    "user-check": "<path d=\"m16 11 2 2 4-4\" /> <path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\" /> <circle cx=\"9\" cy=\"7\" r=\"4\" />",
+    "package-check": "<path d=\"M12 22V12\" /> <path d=\"m16 17 2 2 4-4\" /> <path d=\"M21 11.127V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.729l7 4a2 2 0 0 0 2 .001l1.32-.753\" /> <path d=\"M3.29 7 12 12l8.71-5\" /> <path d=\"m7.5 4.27 8.997 5.148\" />",
+    "scan-check": "<path d=\"m8 11 2 2 4-4\" /> <circle cx=\"11\" cy=\"11\" r=\"8\" /> <path d=\"m21 21-4.3-4.3\" />",
+    "activity": "<path d=\"M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2\" />",
+    "headset": "<path d=\"M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z\" /> <path d=\"M21 16v2a4 4 0 0 1-4 4h-5\" />",
+}
+
+# (number, short label, lucide icon key, service slug, detail description)
+WHEEL_PHASES = [
+    ("01", "Requirements",        "clipboard-list",  "business-requirements",
+     "Business requirements gathering: define outcomes, scope, and acceptance criteria."),
+    ("02", "Architecture",        "network",         "solution-architecture",
+     "Solutions architecture: define the solution, data flows, integrations, and security."),
+    ("03", "App design",          "panels-top-left", "ai-app-design",
+     "App design: define user journeys, interfaces, data models, and components."),
+    ("04", "Development",         "code-xml",        "ai-app-development",
+     "App development: implement features, APIs, integrations, and build pipelines."),
+    ("05", "App testing",         "test-tubes",      "qa-testing",
+     "App testing: verify functionality, integrations, security, and performance."),
+    ("06", "UAT support",         "user-check",      "uat-testing-support",
+     "UAT support: help business users validate agreed acceptance criteria."),
+    ("07", "Pre-deploy",          "package-check",   "deployment-support",
+     "Pre-deploy support: prepare release readiness, rollback, and handover."),
+    ("08", "Post-deploy testing", "scan-check",      "post-deployment-testing-support",
+     "Post-deploy testing: validate production journeys and integrations."),
+    ("09", "Hypercare",           "activity",        "post-deployment-hypercare",
+     "Post-deploy hypercare: enhanced monitoring, rapid triage, and stabilization."),
+    ("10", "Ongoing support",     "headset",         "post-deployment-support",
+     "Post-deploy support: ongoing incident management, maintenance, and updates."),
+]
+
+_W_NAVY = "#01234e"; _W_BLUE = "#0072fe"; _W_SEG = "#dceafe"; _W_SEGINK = "#1b3b63"
+_W_LABEL = "#33425a"; _W_HUB = "#eef3f9"; _W_HUBLINE = "#d7e0ec"
+_W_CX, _W_CY = 430.0, 340.0
+_W_R0, _W_R1 = 128.0, 212.0
+_W_RM = (_W_R0 + _W_R1) / 2
+_W_GAP = 1.6
+_W_POINT = 5.0
+_W_LBLR = 250.0
+_W_WIDTH, _W_HEIGHT = 860, 720
+
+
+def _w_pol(r, deg):
+    a = math.radians(deg)
+    return (_W_CX + r * math.cos(a), _W_CY + r * math.sin(a))
+
+
+def _w_seg_path(a0, a1):
+    g = _W_GAP / 2
+    a0s, a1s = a0 + g, a1 - g
+    b = _w_pol(_W_R1, a0s); c = _w_pol(_W_R1, a1s)
+    d = _w_pol(_W_RM, a1s + _W_POINT); e = _w_pol(_W_R0, a1s)
+    a_ = _w_pol(_W_R0, a0s); n = _w_pol(_W_RM, a0s - _W_POINT)
+    f = lambda p: f"{p[0]:.2f} {p[1]:.2f}"
+    return (f"M {f(b)} A {_W_R1:.1f} {_W_R1:.1f} 0 0 1 {f(c)} L {f(d)} L {f(e)} "
+            f"A {_W_R0:.1f} {_W_R0:.1f} 0 0 0 {f(a_)} L {f(n)} Z")
+
+
+def _w_icon(name, x, y, size, color, cls=""):
+    inner = WHEEL_ICONS[name]
+    s = size / 24.0
+    c = f' class="{cls}"' if cls else ""
+    return (f'<g{c} transform="translate({x - size/2:.2f},{y - size/2:.2f}) scale({s:.3f})" '
+            f'fill="none" stroke="{color}" stroke-width="2" stroke-linecap="round" '
+            f'stroke-linejoin="round" aria-hidden="true">{inner}</g>')
+
+
+def build_wheel(interactive=True, active=0, prefix=""):
+    p = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {_W_WIDTH} {_W_HEIGHT}" '
+        f'font-family="Calibri, Segoe UI, sans-serif" '
+        f'{"class=\"wheel__svg\" " if interactive else ""}role="img" '
+        f'aria-label="Hardened Builds LLC application development lifecycle: ten sequential phases">'
+    ]
+    if not interactive:
+        p.append(f'<rect width="{_W_WIDTH}" height="{_W_HEIGHT}" fill="#ffffff"/>')
+    for k, (num, label, icon, slug, tip) in enumerate(WHEEL_PHASES):
+        a0 = -90 + k * 36; a1 = a0 + 36; mid = a0 + 18
+        d = _w_seg_path(a0, a1)
+        is_active = (k == active) and not interactive
+        fill = _W_BLUE if is_active else _W_SEG
+        ink = "#ffffff" if is_active else _W_SEGINK
+        nx, ny = _w_pol(_W_RM + 26, mid)
+        numx, numy = _w_pol(_W_RM - 14, mid)
+        lx, ly = _w_pol(_W_LBLR, mid)
+        anchor = "middle"
+        if lx > _W_CX + 20: anchor = "start"
+        elif lx < _W_CX - 20: anchor = "end"
+        words = label.split()
+        if len(label) > 11 and len(words) > 1:
+            cut = 1 if words[0] in ("Post-deploy", "Ongoing", "UAT", "App") and len(words) == 2 else (len(words) + 1) // 2
+            lines = [" ".join(words[:cut]), " ".join(words[cut:])]
+        else:
+            lines = [label]
+        ly0 = ly - (len(lines) - 1) * 9
+        tspans = "".join(
+            f'<tspan x="{lx:.1f}" y="{ly0 + i*18:.1f}">{html.escape(ln)}</tspan>'
+            for i, ln in enumerate(lines)
+        )
+        shape = (
+            f'<path class="wseg__shape" d="{d}" fill="{fill}" stroke="#ffffff" stroke-width="2"/>'
+            f'{_w_icon(icon, nx, ny, 22, ink, cls="wseg__icon")}'
+            f'<text class="wseg__num" x="{numx:.1f}" y="{numy+5:.1f}" text-anchor="middle" '
+            f'font-size="17" font-weight="700" fill="{ink}">{num}</text>'
+        )
+        lbl = (f'<text class="wseg__label" text-anchor="{anchor}" font-size="15.5" '
+               f'font-weight="600" fill="{_W_LABEL}">{tspans}</text>')
+        if interactive:
+            p.append(
+                f'<a class="wseg" href="{prefix}services/{slug}.html" data-phase="{k}" '
+                f'data-num="{num}" data-label="{html.escape(label, quote=True)}" '
+                f'data-tip="{html.escape(tip, quote=True)}" '
+                f'aria-label="Phase {num}, {html.escape(label, quote=True)}: {html.escape(tip, quote=True)}">'
+                f'{shape}{lbl}</a>'
+            )
+        else:
+            p.append(f'<g>{shape}{lbl}</g>')
+    p.append(f'<circle cx="{_W_CX}" cy="{_W_CY}" r="{_W_R0-14:.1f}" fill="{_W_HUB}" stroke="{_W_HUBLINE}" stroke-width="1.5"/>')
+    p.append(f'<text x="{_W_CX}" y="{_W_CY-24:.1f}" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="{_W_LABEL}">HARDENED BUILDS</text>')
+    p.append(f'<text x="{_W_CX}" y="{_W_CY+8:.1f}" text-anchor="middle" font-size="34" font-weight="700" fill="{_W_NAVY}">SDLC</text>')
+    p.append(f'<text x="{_W_CX}" y="{_W_CY+34:.1f}" text-anchor="middle" font-size="14" fill="{_W_LABEL}">Application lifecycle</text>')
+    p.append("</svg>")
+    return "\n".join(p)
+
+
 # ---------------------------------------------------------------------------
 # Shared markup helpers
 # ---------------------------------------------------------------------------
@@ -394,40 +531,29 @@ def footer(depth):
 
 
 def process_diagram(depth):
-    """Interactive process overview: accessible, CSS hover + JS click-to-pin."""
+    """Interactive radial SDLC wheel: self-contained SVG, hover/focus + click to service."""
     prefix = "../" * depth
-    nodes = ""
-    for s in SERVICES:
-        bubble_items = "".join(f"<li>{e(b)}</li>" for b in s["bubble"])
-        nodes += f"""
-      <li class="pstep" data-step="{s['number']}">
-        <a class="pstep__trigger" href="{prefix}services/{s['slug']}.html"
-           aria-describedby="bubble-{s['number']}">
-          <span class="pstep__num">{s['number']:02d}</span>
-          <span class="pstep__name">{e(s['name'])}</span>
-          <span class="pstep__summary">{e(s['summary'])}</span>
-        </a>
-        <div class="pstep__bubble" id="bubble-{s['number']}" role="note">
-          <p class="pstep__bubble-title">{e(s['name'])}</p>
-          <ul>{bubble_items}</ul>
-          <a class="pstep__bubble-link" href="{prefix}services/{s['slug']}.html">View service detail</a>
-        </div>
-      </li>"""
+    wheel = build_wheel(interactive=True, prefix=prefix)
+    first = WHEEL_PHASES[0]
     return f"""
 <section class="process" id="process" aria-labelledby="process-heading">
   <div class="container">
-    <h2 id="process-heading">Process Overview</h2>
+    <h2 id="process-heading">Application Development Lifecycle</h2>
     <p class="section-lead">
       Hardened Builds LLC delivers the complete application development lifecycle as a
-      governed, sequential process. Position the pointer over a phase, or activate it
-      by keyboard, to review its specific activities. Select a phase to open its
-      detailed description.
+      governed, sequential process. Position the pointer over a phase, or move to it by
+      keyboard, to review its activities. Select a phase to open its detailed description.
     </p>
-    <ol class="process__flow">{nodes}
-    </ol>
+    <div class="wheel">
+      <div class="wheel__diagram">{wheel}</div>
+      <p class="wheel__detail" id="wheel-detail" aria-live="polite" aria-atomic="true">
+        <span class="wheel__detail-name">{e(first[0])} &middot; {e(first[1])}</span>
+        <span class="wheel__detail-text"> &mdash; {e(first[4])}</span>
+      </p>
+    </div>
     <p class="process__hint">Each phase links to a dedicated service page.</p>
     <p class="process__download">
-      <a href="{prefix}assets/process-overview.svg" download>Download the process overview image (SVG)</a>
+      <a href="{prefix}assets/process-overview.svg" download>Download the lifecycle diagram (SVG)</a>
     </p>
   </div>
 </section>"""
@@ -614,6 +740,7 @@ body{
   color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased;
 }
 .container{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px}
+.hero,.process,.services,.principles,.site-footer,.svc-hero{scroll-margin-top:80px}
 a{color:var(--blue-ink); text-decoration:none}
 a:hover{text-decoration:underline}
 h1,h2,h3{line-height:1.18; color:var(--navy); font-weight:700; letter-spacing:-.01em}
@@ -672,42 +799,24 @@ p{margin:0 0 1em}
 
 .section-lead{font-size:1.1rem; color:var(--ink-2); max-width:770px}
 
-/* Process diagram */
+/* Process diagram — radial SDLC wheel */
 .process{padding:76px 0; background:#fff}
-.process__flow{list-style:none; margin:30px 0 0; padding:0;
-  display:grid; grid-template-columns:repeat(5,1fr); gap:16px}
-.pstep{position:relative}
-.pstep__trigger{display:block; height:100%; background:var(--step); border:1px solid var(--line);
-  border-radius:var(--radius); padding:16px 16px 18px; color:var(--ink);
-  transition:border-color .15s, background .15s, box-shadow .15s, transform .05s}
-.pstep__trigger:hover,.pstep__trigger:focus-visible{text-decoration:none; border-color:var(--blue);
-  background:#fff; box-shadow:var(--shadow-md); transform:translateY(-2px)}
-.pstep__num{display:inline-block; font-size:.84rem; font-weight:700; letter-spacing:.06em;
-  color:#fff; background:var(--navy); border-radius:6px; padding:3px 9px; margin-bottom:10px}
-.pstep__name{display:block; font-weight:700; font-size:1.02rem; margin-bottom:5px; color:var(--navy)}
-.pstep__summary{display:block; font-size:.9rem; color:var(--ink-dim); line-height:1.45}
-.pstep::after{content:""; position:absolute; top:34px; right:-13px; width:14px; height:2px;
-  background:var(--line-2); z-index:1}
-.pstep::before{content:""; position:absolute; top:30px; right:-16px; border:5px solid transparent;
-  border-left-color:var(--line-2); z-index:2}
-.pstep:nth-child(5n)::after,.pstep:nth-child(5n)::before,.pstep:last-child::after,.pstep:last-child::before{display:none}
-
-.pstep__bubble{position:absolute; left:0; top:calc(100% + 10px); width:300px; max-width:84vw;
-  background:#fff; border:1px solid var(--blue); border-radius:12px; padding:16px 18px;
-  box-shadow:var(--shadow-lg); z-index:40; opacity:0; visibility:hidden;
-  transform:translateY(-6px); transition:opacity .15s, transform .15s}
-.pstep__bubble::before{content:""; position:absolute; top:-7px; left:28px; width:12px; height:12px;
-  background:#fff; border-left:1px solid var(--blue); border-top:1px solid var(--blue); transform:rotate(45deg)}
-.pstep:hover .pstep__bubble,.pstep:focus-within .pstep__bubble,.pstep.is-pinned .pstep__bubble{
-  opacity:1; visibility:visible; transform:translateY(0)}
-.pstep:nth-child(5n) .pstep__bubble,.pstep:nth-child(5n - 1) .pstep__bubble{left:auto; right:0}
-.pstep:nth-child(5n) .pstep__bubble::before,.pstep:nth-child(5n - 1) .pstep__bubble::before{left:auto; right:28px}
-.pstep__bubble-title{font-weight:700; margin:0 0 8px; color:var(--navy)}
-.pstep__bubble ul{margin:0 0 10px; padding-left:18px}
-.pstep__bubble li{font-size:.92rem; color:var(--ink-2); margin-bottom:5px; line-height:1.4}
-.pstep__bubble-link{font-size:.9rem; font-weight:700}
-.process__hint{margin-top:22px; color:var(--ink-dim); font-size:.95rem}
-.process__download{margin-top:4px; font-size:.95rem}
+.wheel{margin-top:26px}
+.wheel__diagram{max-width:760px; margin:0 auto}
+.wheel__svg{width:100%; height:auto; display:block; overflow:visible}
+.wseg{cursor:pointer; outline:none}
+.wseg .wseg__shape{transition:fill .15s ease}
+.wseg .wseg__num,.wseg .wseg__icon{transition:fill .15s ease, stroke .15s ease}
+.wseg:hover .wseg__shape,.wseg:focus-visible .wseg__shape,.wseg.is-active .wseg__shape{fill:var(--blue)}
+.wseg:hover .wseg__num,.wseg:focus-visible .wseg__num,.wseg.is-active .wseg__num{fill:#fff}
+.wseg:hover .wseg__icon,.wseg:focus-visible .wseg__icon,.wseg.is-active .wseg__icon{stroke:#fff}
+.wseg:focus-visible .wseg__shape{stroke:var(--navy); stroke-width:3}
+.wseg__label{pointer-events:none}
+.wheel__detail{max-width:720px; margin:18px auto 0; text-align:center; color:var(--ink-2);
+  font-size:1.06rem; line-height:1.55; min-height:3.2em}
+.wheel__detail-name{font-weight:700; color:var(--navy); white-space:nowrap}
+.process__hint{margin-top:18px; color:var(--ink-dim); font-size:.95rem; text-align:center}
+.process__download{margin-top:4px; font-size:.95rem; text-align:center}
 
 /* Services grid */
 .services{padding:76px 0; background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
@@ -799,10 +908,7 @@ p{margin:0 0 1em}
   .nav-menu.is-open{display:flex}
   .sub-menu{position:static; display:block; border:none; box-shadow:none; background:transparent; padding:0 0 6px 12px; min-width:0}
   .has-sub:hover .sub-menu{display:block}
-  .process__flow{grid-template-columns:1fr}
-  .pstep__bubble{position:static; width:auto; max-width:none; opacity:1; visibility:visible; transform:none;
-    margin-top:10px; box-shadow:none}
-  .pstep__bubble::before{display:none}
+  .wheel__detail{font-size:1rem}
   .phase-nav__link{max-width:46%}
 }
 """
@@ -822,34 +928,31 @@ SITE_JS = r"""(function () {
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
   }
-  // Process-step click-to-pin: activating a step fixes its bubble open.
-  // Hover and keyboard focus already reveal the bubble via CSS; this adds a
-  // persistent pin so the specifics can be read without holding position.
-  var steps = document.querySelectorAll(".pstep");
-  Array.prototype.forEach.call(steps, function (step) {
-    var trigger = step.querySelector(".pstep__trigger");
-    if (!trigger) { return; }
-    trigger.addEventListener("click", function (ev) {
-      // On fine-pointer devices, a first activation pins; the link still works
-      // on the second activation. On touch, the bubble is always visible.
-      if (window.matchMedia && window.matchMedia("(hover: hover)").matches) {
-        if (!step.classList.contains("is-pinned")) {
-          ev.preventDefault();
-          Array.prototype.forEach.call(steps, function (s) { s.classList.remove("is-pinned"); });
-          step.classList.add("is-pinned");
-        }
-      }
-    });
-  });
-  document.addEventListener("click", function (ev) {
-    if (!ev.target.closest || !ev.target.closest(".pstep")) {
-      Array.prototype.forEach.call(steps, function (s) { s.classList.remove("is-pinned"); });
+  // SDLC wheel: hovering or focusing a phase updates the detail line beneath
+  // it. Clicking a phase navigates to its service page (native link behavior).
+  var detail = document.getElementById("wheel-detail");
+  var segs = document.querySelectorAll(".wseg");
+  function setActive(seg) {
+    Array.prototype.forEach.call(segs, function (s) { s.classList.remove("is-active"); });
+    if (!seg) { return; }
+    seg.classList.add("is-active");
+    if (detail) {
+      var name = seg.getAttribute("data-num") + " · " + seg.getAttribute("data-label");
+      var tip = seg.getAttribute("data-tip") || "";
+      detail.innerHTML = "";
+      var ns = document.createElement("span");
+      ns.className = "wheel__detail-name";
+      ns.textContent = name;
+      var ts = document.createElement("span");
+      ts.className = "wheel__detail-text";
+      ts.textContent = " — " + tip;
+      detail.appendChild(ns);
+      detail.appendChild(ts);
     }
-  });
-  document.addEventListener("keydown", function (ev) {
-    if (ev.key === "Escape") {
-      Array.prototype.forEach.call(steps, function (s) { s.classList.remove("is-pinned"); });
-    }
+  }
+  Array.prototype.forEach.call(segs, function (seg) {
+    seg.addEventListener("mouseenter", function () { setActive(seg); });
+    seg.addEventListener("focus", function () { setActive(seg); });
   });
 })();
 """
@@ -860,107 +963,8 @@ SITE_JS = r"""(function () {
 # ---------------------------------------------------------------------------
 
 def build_process_svg():
-    """A self-contained SVG image of the end-to-end lifecycle, two rows of five."""
-    W, H = 1600, 760
-    cols, rows = 5, 2
-    pad_x, pad_y = 70, 150
-    gap_x, gap_y = 40, 90
-    box_w = (W - 2 * pad_x - (cols - 1) * gap_x) / cols
-    box_h = 150
-    parts = []
-    parts.append(
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
-        f'font-family="Calibri, Segoe UI, sans-serif" role="img" '
-        f'aria-label="Hardened Builds LLC software development lifecycle process overview">'
-    )
-    parts.append(f'<rect width="{W}" height="{H}" fill="#ffffff"/>')
-    parts.append(
-        f'<text x="{W/2}" y="56" fill="#01234e" font-size="34" font-weight="700" '
-        f'text-anchor="middle">Hardened Builds LLC — Software Development Lifecycle</text>'
-    )
-    parts.append(
-        f'<text x="{W/2}" y="92" fill="#5b6b84" font-size="19" text-anchor="middle">'
-        f'A governed, sequential process across ten lifecycle phases</text>'
-    )
-
-    pos = []
-    for i, s in enumerate(SERVICES):
-        r = i // cols
-        c = i % cols
-        # serpentine ordering so arrows flow left-to-right, then right-to-left
-        if r % 2 == 1:
-            c = cols - 1 - c
-        x = pad_x + c * (box_w + gap_x)
-        y = pad_y + r * (box_h + gap_y)
-        pos.append((x, y, box_w, box_h))
-
-    # connectors in lifecycle order
-    parts.append(
-        '<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" '
-        'orient="auto" markerUnits="strokeWidth">'
-        '<path d="M0,0 L8,3 L0,6 Z" fill="#0072fe"/></marker></defs>'
-    )
-    for i in range(len(SERVICES) - 1):
-        ax, ay, aw, ah = pos[i]
-        bx, by, bw, bh = pos[i + 1]
-        if ay == by:
-            if bx > ax:
-                x1, y1, x2, y2 = ax + aw, ay + ah/2, bx, by + bh/2
-            else:
-                x1, y1, x2, y2 = ax, ay + ah/2, bx + bw, by + bh/2
-        else:
-            x1, y1, x2, y2 = ax + aw/2, ay + ah, bx + bw/2, by
-        parts.append(
-            f'<line x1="{x1:.0f}" y1="{y1:.0f}" x2="{x2:.0f}" y2="{y2:.0f}" '
-            f'stroke="#9db6d6" stroke-width="2.5" marker-end="url(#arr)"/>'
-        )
-
-    # boxes
-    def wrap(text, limit=22):
-        words = text.split()
-        lines, cur = [], ""
-        for w in words:
-            if len(cur) + len(w) + 1 <= limit:
-                cur = (cur + " " + w).strip()
-            else:
-                lines.append(cur); cur = w
-        if cur:
-            lines.append(cur)
-        return lines
-
-    for i, s in enumerate(SERVICES):
-        x, y, w, h = pos[i]
-        parts.append(
-            f'<rect x="{x:.0f}" y="{y:.0f}" width="{w:.0f}" height="{h:.0f}" rx="12" '
-            f'fill="#f7f9fd" stroke="#01234e" stroke-width="1.6"/>'
-        )
-        parts.append(
-            f'<text x="{x+18:.0f}" y="{y+34:.0f}" fill="#0072fe" font-size="18" '
-            f'font-weight="700">{s["number"]:02d}</text>'
-        )
-        name_lines = wrap(s["name"], 20)
-        ty = y + 64
-        for ln in name_lines:
-            parts.append(
-                f'<text x="{x+18:.0f}" y="{ty:.0f}" fill="#01234e" font-size="20" '
-                f'font-weight="700">{html.escape(ln)}</text>'
-            )
-            ty += 24
-        sum_lines = wrap(s["summary"], 30)
-        ty += 4
-        for ln in sum_lines[:2]:
-            parts.append(
-                f'<text x="{x+18:.0f}" y="{ty:.0f}" fill="#5b6b84" font-size="14">'
-                f'{html.escape(ln)}</text>'
-            )
-            ty += 18
-
-    parts.append(
-        f'<text x="{W-70}" y="{H-24}" fill="#8aa0bf" font-size="14" '
-        f'text-anchor="end">hardenedbuild — process overview</text>'
-    )
-    parts.append("</svg>")
-    return "\n".join(parts)
+    """Downloadable lifecycle image: the static radial SDLC wheel (phase 01 active)."""
+    return build_wheel(interactive=False, active=0)
 
 
 # ---------------------------------------------------------------------------
